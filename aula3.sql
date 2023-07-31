@@ -18,30 +18,41 @@ insert into book (title, author, publication_year, price, isbn) values ('2012', 
 insert into book (title, author, publication_year, price, isbn) values ('2020', 'George Orwell', 2020, 10.99, '4788535914849');
 insert into book (title, author, publication_year, price, isbn) values ('Clean Code V2', 'Uncle Bob', 2012, 10.99, '3788535914849');
 
-select * from book;
-
-update book
-   set price = 12.99
- where id = 1;
-
-update book
-  set price = 19.99
-where id = 2;
-
-select * from book;
-
-delete from book
- where publication_year < 2000
-
-delete from book
- where publication_year = 2020
-
-delete from book
- where author = 'Uncle Bob'
-
-select * from book;
-
-select title as "Título do book",
-       author as "Autor do book"
+select *
   from book
- where active = true;
+ where author = 'George Orwell';
+
+select *
+  from book
+ where author like '%_ob';
+
+select *
+  from book
+ where author like '%Bob%';
+
+select *
+  from book
+ where author <> 'George Orwell';
+
+select *
+  from book
+ where publication_year > 2012;
+
+select *
+  from book
+ where publication_year between 2000 and 2012;
+
+select *
+  from book
+ where publication_year <> 2012;
+
+select *
+  from book
+ where publication_year in (1949, 2001);
+
+select *
+  from book
+ where (publication_year = 1949 or publication_year = 2012)
+   and author like '%Bob%';
+
+select count(*) from book;
